@@ -71,45 +71,49 @@ export const Project = (): JSX.Element => {
   return (
     <>
       {repositories &&
-        repositories?.map?.((repository: any) => (
-          <ProjectWrapper key={repository.id}>
-            <ProjectTitle
-              as="h2"
-              type="heading3"
-              css={{ marginBottom: "$3" }}
-              color="grey4"
-            >
-              {repository.name}
-            </ProjectTitle>
+        repositories?.map?.((repository: any) =>
+          repository.name !== "Franklmarins" &&
+          repository.name !== "portfolio" ? (
+            <ProjectWrapper key={repository.id}>
+              <ProjectTitle
+                as="h2"
+                type="heading3"
+                css={{ marginBottom: "$3" }}
+                color="grey4"
+              >
+                {console.log(repository.name)}
+                {repository.name}
+              </ProjectTitle>
 
-            <ProjectStack>
-              <Text type="body2" color="grey2">
-                Linguagens utilizadas:
+              <ProjectStack>
+                <Text type="body2" color="grey2">
+                  Linguagens utilizadas:
+                </Text>
+                {repository.language.map((e: string) => (
+                  <ProjectStackTech key={Math.random()}>
+                    <Text color="grey2" type="body2">
+                      {e}
+                    </Text>
+                  </ProjectStackTech>
+                ))}
+              </ProjectStack>
+
+              <Text type="body1" color="grey2">
+                {repository.description?.substring(0, 129)}
               </Text>
-              {repository.language.map((e: string) => (
-                <ProjectStackTech key={Math.random()}>
-                  <Text color="grey2" type="body2">
-                    {e}
-                  </Text>
-                </ProjectStackTech>
-              ))}
-            </ProjectStack>
-
-            <Text type="body1" color="grey2">
-              {repository.description?.substring(0, 129)}
-            </Text>
-            <ProjectLinks>
-              <ProjectLink target="_blank" href={repository.html_url}>
-                <FaGithub /> Código no Github
-              </ProjectLink>
-              {repository.homepage && (
-                <ProjectLink target="_blank" href={`${repository.homepage}`}>
-                  <FaShare /> Ver demonstração
+              <ProjectLinks>
+                <ProjectLink target="_blank" href={repository.html_url}>
+                  <FaGithub /> Código no Github
                 </ProjectLink>
-              )}
-            </ProjectLinks>
-          </ProjectWrapper>
-        ))}
+                {repository.homepage && (
+                  <ProjectLink target="_blank" href={`${repository.homepage}`}>
+                    <FaShare /> Ver demonstração
+                  </ProjectLink>
+                )}
+              </ProjectLinks>
+            </ProjectWrapper>
+          ) : null
+        )}
     </>
   );
 };

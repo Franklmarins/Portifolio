@@ -94,12 +94,6 @@ export const Home = (): JSX.Element => {
               <Text as="h2" type="heading4" color="grey4">
                 Meus projetos
               </Text>
-              <Text as="p" type="body1" color="grey2">
-                Meus projetos{" "}
-                <Text as="span" color="brand5">
-                  paralelos
-                </Text>
-              </Text>
             </ProjectsAreaSocialMediaMessage>
             <ProjectsAreaContent>
               <Project />
