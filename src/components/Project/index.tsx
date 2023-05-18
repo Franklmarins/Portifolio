@@ -72,8 +72,7 @@ export const Project = (): JSX.Element => {
     <>
       {repositories &&
         repositories?.map?.((repository: any) =>
-          repository.name !== "Franklmarins" &&
-          repository.name !== "portfolio" ? (
+          repository.name !== "Franklmarins" ? (
             <ProjectWrapper key={repository.id}>
               <ProjectTitle
                 as="h2"
